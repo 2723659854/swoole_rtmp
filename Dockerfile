@@ -8,7 +8,8 @@ RUN \
     apk add --no-cache libstdc++ libpq && \
     apk add --no-cache --virtual .build-deps $PHPIZE_DEPS curl-dev brotli-dev postgresql-dev openssl-dev pcre-dev pcre2-dev zlib-dev && \
 # PHP extension pdo_mysql is included since 4.8.12+ and 5.0.1+.
-    docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install pdo_mysql &&  \
+    docker-php-ext-install pcntl &&  \
     pecl channel-update pecl.php.net && \
     pecl install --configureoptions 'enable-redis-igbinary="no" enable-redis-lzf="no" enable-redis-zstd="no"' redis-6.0.2 && \
 # PHP extension Redis is included since 4.8.12+ and 5.0.1+.
